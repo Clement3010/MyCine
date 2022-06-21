@@ -1,0 +1,9 @@
+<br />
+<div>
+    <button mat-raised-button color="primary" routerLink="my-movies">My movies</button>
+    <button mat-raised-button color="primary" routerLink="add-or-edit-movie">Add or Edit</button>
+</div>
+
+<br />
+<app-add-or-edit-movie (newMovieEvent)="addOrUpdateMovie($event)"></app-add-or-edit-movie>
+<app-my-movies [movies]="movies"></app-my-movies>
