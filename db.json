@@ -1,0 +1,19 @@
+{
+  "movie": [
+    {
+      "id": 1,
+      "title": "First Book",
+      "synopsis": "Basiiiiiiiic",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "title": "Second Book",
+      "synopsis": "Nul nul nul",
+      "rating": 0
+    },
+    {
+      "id": 3
+    }
+  ]
+}
