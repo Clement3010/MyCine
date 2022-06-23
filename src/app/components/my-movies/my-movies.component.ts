@@ -14,7 +14,6 @@ export class MyMoviesComponent implements OnInit {
   @Output() editMovieEvent = new EventEmitter<Movie>();
   
   movies!: Array<Movie>;
-  displayedColumns: string[] = ['title', 'synopsis', 'rating'];
 
   ngOnInit(): void {
     this.movieService.getAllMovies().subscribe(response => {
@@ -25,7 +24,5 @@ export class MyMoviesComponent implements OnInit {
   editMovie(movie: Movie) {
     this.editMovieEvent.emit(movie);
   }
-
-  //@Input()  movies: Array<Movie> = [];
 
 }

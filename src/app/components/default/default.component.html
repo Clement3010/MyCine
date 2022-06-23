@@ -1,12 +1,29 @@
-<br />
-<div>
-    <button mat-raised-button color="primary" routerLink="my-movies">My movies</button>
-    <button mat-raised-button color="primary" routerLink="add-or-edit-movie">Add or Edit</button>
-</div>
+<section class="hero is-link">
+    <div class="hero-body">
+        <p class="title">
+            My Ciné
+        </p>
+        <p class="subtitle">
+            Votre cinéma en ligne
+        </p>
+    </div>
+</section>
 
-<br />
-<app-add-or-edit-movie [editMovie]="editMovie"></app-add-or-edit-movie>
-<app-my-movies (editMovieEvent)="updateMovie($event)"></app-my-movies>
+<section class="section is-small">
+    <nav class="level">
+        <p class="level-item has-text-centered">
+            <button class="button is-dark is-large" routerLink="my-movies">Mes Films</button>
+        </p>
+        <p class="level-item has-text-centered">
+            <button class="button is-dark is-large" routerLink="add-or-edit-movie">Ajouter Film</button>
+        </p>
+    </nav>
+</section>
+
+<router-outlet></router-outlet>
+
+<!-- <app-add-or-edit-movie [editMovie]="editMovie"></app-add-or-edit-movie>
+<app-my-movies (editMovieEvent)="updateMovie($event)"></app-my-movies> -->
 
 <!-- <app-add-or-edit-movie (newMovieEvent)="addOrUpdateMovie($event)"></app-add-or-edit-movie> -->
 <!-- <app-my-movies [movies]="movies"></app-my-movies> -->

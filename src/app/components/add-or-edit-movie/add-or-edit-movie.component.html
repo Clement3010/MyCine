@@ -1,14 +1,25 @@
-<form [formGroup]="movieForm" (ngSubmit)="submitMovie()">
+<section class="hero">
+  <div class="hero-body">
+    <p class="title">
+      Ajouter un Film
+    </p>
+    <p class="subtitle">
+      Ajouter vos films préférés dans votre bibliothèque
+    </p>
 
-    <label for="title"> Titre : </label>
-    <input id="title" type="text" formControlName="title">
-  
-    <label for="synopsis"> Synopsis : </label>
-    <input id="synopsis" type="text" formControlName="synopsis">
+    <form [formGroup]="movieForm" (ngSubmit)="submitMovie()">
 
-    <label for="rating"> Note : </label>
-    <input id="rating" type="number" formControlName="rating">
-  
-    <button type="submit" [disabled]="!movieForm.valid"> Valider </button>
+      <label for="title"> Titre : </label>
+      <input id="title" type="text" formControlName="title">
 
-  </form>
+      <label for="synopsis"> Synopsis : </label>
+      <input id="synopsis" type="text" formControlName="synopsis">
+
+      <label for="rating"> Note : </label>
+      <input id="rating" type="number" formControlName="rating">
+
+      <button class="button" type="submit" [disabled]="!movieForm.valid"> Valider </button>
+
+    </form>
+  </div>
+</section>
