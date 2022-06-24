@@ -11,6 +11,12 @@
       "title": "Second Book",
       "synopsis": "Nul nul nul",
       "rating": 0
+    },
+    {
+      "title": "Trois",
+      "rating": 3,
+      "synopsis": "Trois Trois Trois",
+      "id": 3
     }
   ]
 }

@@ -1,5 +1,7 @@
 <section class="hero">
+
   <div class="hero-body">
+
     <p class="title">
       Ajouter un Film
     </p>
@@ -8,18 +10,52 @@
     </p>
 
     <form [formGroup]="movieForm" (ngSubmit)="submitMovie()">
+      <div class="field">
+        <label class="label">Titre</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Titre..." formControlName="title">
+        </div>
+      </div>
 
-      <label for="title"> Titre : </label>
-      <input id="title" type="text" formControlName="title">
+      <div class="field">
+        <label class="label">Note</label>
+        <div class="control">
+          <input class="input" type="number" placeholder="10" formControlName="rating">
+        </div>
+      </div>
 
-      <label for="synopsis"> Synopsis : </label>
-      <input id="synopsis" type="text" formControlName="synopsis">
+      <div class="field">
+        <label class="label">Synopsis</label>
+        <div class="control">
+          <textarea class="textarea" placeholder="Synopsis..." formControlName="synopsis"></textarea>
+        </div>
+      </div>
 
-      <label for="rating"> Note : </label>
-      <input id="rating" type="number" formControlName="rating">
-
-      <button class="button" type="submit" [disabled]="!movieForm.valid"> Valider </button>
-
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" type="submit" [disabled]="!movieForm.valid">Valider</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light" type="reset">Annuler</button>
+        </div>
+      </div>
     </form>
+
+    <div [ngClass]="{'is-active': successCreation}" id="modal-success-creation" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <article class="message is-link">
+          <div class="message-header">
+            <p>Félicitations !</p>
+            <button class="delete" aria-label="close" (click)="closeModal()"></button>
+          </div>
+          <div class="message-body">
+            Le film <strong>{{movie.title}}</strong> a été ajouté avec succès !
+          </div>
+        </article>
+      </div>
+    </div>
+
   </div>
+
 </section>

@@ -15,6 +15,7 @@ export class AddOrEditMovieComponent implements OnInit, OnChanges{
   @Input()  editMovie!: Movie;
   movie!: Movie;
   edit = false;
+  successCreation = false;
 
   movieForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -35,7 +36,8 @@ export class AddOrEditMovieComponent implements OnInit, OnChanges{
     if(!this.edit) {
       this.movieService.addMovie(this.movie).subscribe(response => {
         this.movie = response;
-      });;
+      });
+      this.successCreation = true;
     }
     else {
       this.movie.id = this.editMovie.id;
@@ -57,5 +59,16 @@ export class AddOrEditMovieComponent implements OnInit, OnChanges{
     }
   }
 
-    //@Output() newMovieEvent = new EventEmitter<Movie>();
+  closeModal() {
+    console.log("click");
+    this.successCreation = false;
+    this.movie = {
+      title: '',
+      rating: 0,
+      synopsis: '',
+    }
+    this.movieForm.controls.title.setValue(null);
+    this.movieForm.controls.synopsis.setValue(null);
+    this.movieForm.controls.rating.setValue(null);
+  }
 }

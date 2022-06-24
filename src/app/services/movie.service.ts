@@ -24,8 +24,9 @@ export class MovieService {
     return this._httpClient.put<Movie>(environment.baseUri + "/movie/" + m.id, body);
   }
 
-  deleteMovie(id: number): boolean {
-    return true;
+  deleteMovie(id: number): Observable<unknown> {
+    console.log(id);
+    return this._httpClient.delete(environment.baseUri + "/movie/" + id);
   }
 
   getAllMovies(): Observable<Movie[]> {
