@@ -12,23 +12,24 @@
                 <tr>
                     <th>Id</th>
                     <th>Titre</th>
-                    <th>Synopsis</th>
                     <th>Note</th>
+                    <th>Synopsis</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <th>Id</th>
                     <th>Titre</th>
-                    <th>Synopsis</th>
                     <th>Note</th>
+                    <th>Synopsis</th>
                 </tr>
             </tfoot>
             <tr *ngFor="let movie of movies">
                 <th>{{ movie.id }}</th>
                 <td>{{ movie.title }}</td>
-                <td>{{ movie.synopsis }}</td>
                 <td>{{ movie.rating }}</td>
+                <td>{{ movie.synopsis }}</td>
+                <div class="block button is-success" (click)="gotoDetails(movie)">Détails</div>
                 <div class="block button is-warning" (click)="editMovie(movie)">Modifier</div>
                 <div class="block button is-danger" (click)="deleteMovie(movie)">Supprimer</div>
             </tr>

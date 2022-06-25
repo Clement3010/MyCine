@@ -11,26 +11,39 @@ export class MovieService {
 
   constructor(private _httpClient: HttpClient) { }
 
+  private movieToEdit!: Movie | null;
+
   addMovie(m: Movie): Observable<Movie> {
     this._httpClient.get<number>(environment.baseUri + "/movie?_sort=id&_order=desc").subscribe(response => {
       m.id = response + 1;
-    });;
+    });
     return this._httpClient.post<Movie>(environment.baseUri + "/movie", m);
   }
 
-  editMovie(m: Movie): Observable<Movie> {
-    let body = JSON.stringify(m);
-    console.log(body);
-    return this._httpClient.put<Movie>(environment.baseUri + "/movie/" + m.id, body);
+  editMovie(m: Movie) {
+    this._httpClient.delete(environment.baseUri + "/movie/" + m.id).subscribe(response => {
+      this._httpClient.post<Movie>(environment.baseUri + "/movie", m).subscribe();
+    });
   }
 
   deleteMovie(id: number): Observable<unknown> {
-    console.log(id);
     return this._httpClient.delete(environment.baseUri + "/movie/" + id);
   }
 
   getAllMovies(): Observable<Movie[]> {
     return this._httpClient.get<Array<Movie>>(environment.baseUri + "/movie");
+  }
+
+  editMovieEvent(m: Movie) {
+    this.movieToEdit = m;
+  }
+
+  iseditMovieEvent(): Movie | null {
+    let m = this.movieToEdit;
+    if (m) {
+      this.movieToEdit = null;
+    }
+    return m;
   }
 
 }

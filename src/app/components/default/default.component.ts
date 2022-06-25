@@ -18,11 +18,5 @@ export class DefaultComponent implements OnInit {
   updateMovie(movie: Movie) {
     this.editMovie = movie;
   }
-
-  // movies: Array<Movie> = [];
-
-  // addOrUpdateMovie(newMovie: Movie) {
-  //   this.movies.push(newMovie);
-  //   console.log(this.movies);
-  // }
+  
 }

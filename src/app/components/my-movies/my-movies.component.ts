@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/classes/movie';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -9,7 +10,7 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class MyMoviesComponent implements OnInit {
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private router:Router, private route:ActivatedRoute) { }
 
   movies!: Array<Movie>;
 
@@ -20,7 +21,8 @@ export class MyMoviesComponent implements OnInit {
   }
 
   editMovie(movie: Movie) {
-    //this.editMovieEvent.emit(movie);
+    this.movieService.editMovieEvent(movie);
+    this.router.navigate(['../add-or-edit-movie'], { relativeTo: this.route });
   }
 
   deleteMovie(movie: Movie) {
@@ -32,5 +34,9 @@ export class MyMoviesComponent implements OnInit {
       });
 
     });
+  }
+
+  gotoDetails(movie: Movie): void {
+    this.router.navigate(['../movie', movie.id], { relativeTo: this.route });
   }
 }
