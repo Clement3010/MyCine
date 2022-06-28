@@ -28,7 +28,7 @@
                 <th>{{ movie.id }}</th>
                 <td>{{ movie.title }}</td>
                 <td>{{ movie.rating }}</td>
-                <td>{{ movie.synopsis }}</td>
+                <td>{{ (movie.synopsis.length > 50) ? (movie.synopsis | slice:0:47) + '...' : (movie.synopsis) }}</td>
                 <div class="block button is-success" (click)="gotoDetails(movie)">Détails</div>
                 <div class="block button is-warning" (click)="editMovie(movie)">Modifier</div>
                 <div class="block button is-danger" (click)="deleteMovie(movie)">Supprimer</div>

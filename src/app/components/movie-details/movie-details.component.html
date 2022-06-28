@@ -1,1 +1,19 @@
-<p>movie-details works!</p>
+<article class="message is-link">
+    <div class="message-header">
+        <p>Détails</p>
+    </div>
+    <div class="message-body">
+        <p>
+            <strong>Title</strong> : {{ data.movie.title }}
+        </p>
+
+        <p>
+            <strong>Rating</strong> : {{ data.movie.rating }} / 20
+        </p>
+
+        <p>
+            <strong>Synopsis</strong> : <br>
+            {{ data.movie.synopsis }}
+        </p>
+    </div>
+</article>

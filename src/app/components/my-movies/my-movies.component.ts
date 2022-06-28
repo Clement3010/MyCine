@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/classes/movie';
 import { MovieService } from 'src/app/services/movie.service';
+import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 
 @Component({
   selector: 'app-my-movies',
@@ -10,7 +12,7 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class MyMoviesComponent implements OnInit {
 
-  constructor(private movieService: MovieService, private router:Router, private route:ActivatedRoute) { }
+  constructor(private movieService: MovieService, private router:Router, private route:ActivatedRoute, public dialog: MatDialog) { }
 
   movies!: Array<Movie>;
 
@@ -37,6 +39,8 @@ export class MyMoviesComponent implements OnInit {
   }
 
   gotoDetails(movie: Movie): void {
-    this.router.navigate(['../movie', movie.id], { relativeTo: this.route });
+    this.dialog.open(MovieDetailsComponent, {
+      data: {movie: movie}
+    });
   }
 }

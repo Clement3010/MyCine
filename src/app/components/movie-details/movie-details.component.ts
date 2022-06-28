@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Movie } from 'src/app/classes/movie';
 
 @Component({
   selector: 'app-movie-details',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {movie: Movie}) { }
 
   ngOnInit(): void {
   }
