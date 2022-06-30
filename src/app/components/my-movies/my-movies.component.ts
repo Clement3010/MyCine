@@ -15,10 +15,12 @@ export class MyMoviesComponent implements OnInit {
   constructor(private movieService: MovieService, private router:Router, private route:ActivatedRoute, public dialog: MatDialog) { }
 
   movies!: Array<Movie>;
+  moviesWithFilter!: Array<Movie>;
 
   ngOnInit(): void {
     this.movieService.getAllMovies().subscribe(response => {
       this.movies = response;
+      this.moviesWithFilter = response;
     });
   }
 
@@ -33,6 +35,7 @@ export class MyMoviesComponent implements OnInit {
 
       this.movieService.getAllMovies().subscribe(response => {
         this.movies = response;
+        this.moviesWithFilter = response;
       });
 
     });
@@ -42,5 +45,9 @@ export class MyMoviesComponent implements OnInit {
     this.dialog.open(MovieDetailsComponent, {
       data: {movie: movie}
     });
+  }
+
+  search(value: string){
+    this.moviesWithFilter = this.movies.filter(m => m.title.toLowerCase().includes(value.toLowerCase()));
   }
 }

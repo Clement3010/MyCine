@@ -1,10 +1,16 @@
 <section class="hero">
     <div class="hero-body">
+
         <p class="title">
             Mes Films
         </p>
+
         <p class="subtitle">
             Retrouvez tous les films enregistrés dans votre bibliothèque
+        </p>
+
+        <p>
+            <input class="input" #searchBar type="text" placeholder="Chercher un titre..." (input)="search(searchBar.value)">
         </p>
 
         <table class="table is stripped">
@@ -24,7 +30,7 @@
                     <th>Synopsis</th>
                 </tr>
             </tfoot>
-            <tr *ngFor="let movie of movies">
+            <tr *ngFor="let movie of moviesWithFilter">
                 <th>{{ movie.id }}</th>
                 <td>{{ movie.title }}</td>
                 <td>{{ movie.rating }}</td>
